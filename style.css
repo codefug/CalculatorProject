@@ -1,0 +1,52 @@
+/* 0. 전체설정 */
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+}
+.wall{
+    color: white;
+    background-color: rgb(72, 72, 230);
+    flex: 1 1 0;
+}
+
+/* 1. head */
+#head {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+h1{
+    margin:0;
+    padding: 0;
+}
+
+/* 2. main */
+#main {
+    flex: 5 5 0;
+    display: flex;
+}
+#mainContent{
+    flex: 5 0 0;
+    display: flex;
+    flex-direction: column;
+}
+#screenContainer{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+/* 3. foot */
+#foot {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex: 1 1 0;
+}
