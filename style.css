@@ -28,21 +28,46 @@ h1{
 }
 
 /* 2. main */
-#main {
-    flex: 5 5 0;
-    display: flex;
-}
+
+/* 2-1. 큰 틀 */
 #mainContent{
     flex: 5 0 0;
     display: flex;
     flex-direction: column;
 }
+#main {
+    flex: 5 5 0;
+    display: flex;
+}
+
+/* 2-2. 스크린 */
 #screenContainer{
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    flex:1 1 0;
+    padding: 30px;
+}
+#resultContainer{
+    align-self: flex-start;
 }
 
+/* 2-3. 키보드 */
+#keyboard{
+    display: flex;
+    flex-direction: column;
+    flex:9 9 0;
+}
+.block{
+    display:flex;
+    flex:2 2 0;
+}
+.button{
+    flex:1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 /* 3. foot */
 #foot {
     display: flex;
