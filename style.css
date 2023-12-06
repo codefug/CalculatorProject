@@ -54,7 +54,9 @@ h1{
     border-radius: 20px;
 }
 #resultContainer{
-    align-self: flex-start;
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
 }
 #screen{
     font-size:4vw;
@@ -78,7 +80,7 @@ h1{
     flex:2 2 0;
 }
 .button{
-    flex:1;
+    flex:1 1 0;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +89,7 @@ h1{
     background-color: gainsboro;
     margin: 1px;
     font-size: 3vw;
+    padding: 1px 6px;
 }
 .button:hover{
     filter:brightness(0.8);
