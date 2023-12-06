@@ -1,4 +1,5 @@
 /* 0. 전체설정 */
+
 html {
     height: 100%;
 }
@@ -7,10 +8,10 @@ body {
     flex-direction: column;
     margin: 0;
     height: 100%;
+    background-color: black
 }
 .wall{
-    color: white;
-    background-color: rgb(72, 72, 230);
+    color: white;   
     flex: 1 1 0;
 }
 
@@ -34,6 +35,7 @@ h1{
     flex: 5 0 0;
     display: flex;
     flex-direction: column;
+    border-radius: 30px;
 }
 #main {
     flex: 5 5 0;
@@ -45,13 +47,26 @@ h1{
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    justify-content: space-between;
     flex:1 1 0;
     padding: 30px;
+    background-color: darkgrey;
+    border-radius: 20px;
 }
 #resultContainer{
     align-self: flex-start;
 }
-
+#screen{
+    font-size:4vw;
+}
+#history{
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+#history:hover{
+    color: white;
+}
 /* 2-3. 키보드 */
 #keyboard{
     display: flex;
@@ -67,6 +82,15 @@ h1{
     display:flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: gainsboro;
+    margin: 1px;
+    font-size: 3vw;
+}
+.button:hover{
+    filter:brightness(0.8);
+    font-size: 4vw;
 }
 /* 3. foot */
 #foot {

@@ -7,6 +7,16 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        </style>
 </head>
 
 <body>
@@ -18,11 +28,13 @@
         <div id="mainContent">
             <div id="screenContainer">
                 <div id="resultContainer">
-                    <button id="history">history</button>
+                    <span id="history" class="material-symbols-outlined">
+                        history
+                    </span>
                     <div id="result"></div>
                 </div>
                 <div id="screen">
-                    0
+                    <span>0</span>
                 </div>
             </div>
             <div id="keyboard">
@@ -57,7 +69,7 @@
 
                 </div>
                 <div class="block">
-                    <div id="githubMark" class="button"><i class="fa fa-github"></i></div>
+                    <div id="githubMark" class="button"><a href="https://github.com/codefug/CalculatorProject"><i class="fa fa-github"></i></a></div>
                     <div id="zero" class="button">0</div>
                     <div id="equal" class="button">=</div>
                     <div id="dot" class="button">.</div>
