@@ -3,99 +3,100 @@ let history = document.querySelector('#history');
 let content = `Result<br>`;
 let screen = document.querySelector('#screen');
 let isfloat = -1;
+
 const operator = {
     "divide": '/',
     "multiply": '*',
     "minus": '-',
     "plus": '+'
 }
-//br치면 줄바꿈이 일어남 html에서는 줄바꿈할려면 이것만 됨.
 
+// br치면 줄바꿈이 일어남 html에서는 줄바꿈할려면 이것만 됨.
 // screen function
 // 이거 꼭 적어라 ㅅㅂ script defer 안해서 시간 존나 걸림.
 
 function calculateInfixWithoutParentheses(expression) {
     // 연산자 우선순위 정의
     var operators = {
-      '+': 1,
-      '-': 1,
-      '*': 2,
-      '/': 2
+        '+': 1,
+        '-': 1,
+        '*': 2,
+        '/': 2
     };
-  
+
     // 연산자와 피연산자를 저장할 스택
     var operatorsStack = [];
     var operandsStack = [];
-  
+
     // 각 토큰에 대해 처리
     for (var i = 0; i < expression.length; i++) {
-      var token = expression[i];
-  
-      if (!isNaN(token)) {
-        // 피연산자일 경우 스택에 추가
-        operandsStack.push(parseFloat(token));
-      } else if (token in operators) {
-        // 연산자일 경우 우선순위를 고려하여 스택 조정
-        while (
-          operatorsStack.length > 0 &&
-          operators[operatorsStack[operatorsStack.length - 1]] >= operators[token]
-        ) {
-          var operator = operatorsStack.pop();
-          var operand2 = operandsStack.pop();
-          var operand1 = operandsStack.pop();
-  
-          // 연산 수행 후 결과를 스택에 추가
-          switch (operator) {
-            case '+':
-              operandsStack.push(operand1 + operand2);
-              break;
-            case '-':
-              operandsStack.push(operand1 - operand2);
-              break;
-            case '*':
-              operandsStack.push(operand1 * operand2);
-              break;
-            case '/':
-              operandsStack.push(operand1 / operand2);
-              break;
-            default:
-              throw new Error('지원하지 않는 연산자: ' + operator);
-          }
+        var token = expression[i];
+
+        if (!isNaN(token)) {
+            // 피연산자일 경우 스택에 추가
+            operandsStack.push(parseFloat(token));
+        } else if (token in operators) {
+            // 연산자일 경우 우선순위를 고려하여 스택 조정
+            while (
+                operatorsStack.length > 0 &&
+                operators[operatorsStack[operatorsStack.length - 1]] >= operators[token]
+            ) {
+                var operator = operatorsStack.pop();
+                var operand2 = operandsStack.pop();
+                var operand1 = operandsStack.pop();
+
+                // 연산 수행 후 결과를 스택에 추가
+                switch (operator) {
+                    case '+':
+                        operandsStack.push(operand1 + operand2);
+                        break;
+                    case '-':
+                        operandsStack.push(operand1 - operand2);
+                        break;
+                    case '*':
+                        operandsStack.push(operand1 * operand2);
+                        break;
+                    case '/':
+                        operandsStack.push(operand1 / operand2);
+                        break;
+                    default:
+                        throw new Error('지원하지 않는 연산자: ' + operator);
+                }
+            }
+
+            // 현재 연산자를 스택에 추가
+            operatorsStack.push(token);
         }
-  
-        // 현재 연산자를 스택에 추가
-        operatorsStack.push(token);
-      }
     }
-  
+
     // 스택에 남아 있는 모든 연산자를 처리
     while (operatorsStack.length > 0) {
-      var operator = operatorsStack.pop();
-      var operand2 = operandsStack.pop();
-      var operand1 = operandsStack.pop();
-  
-      // 연산 수행 후 결과를 스택에 추가
-      switch (operator) {
-        case '+':
-          operandsStack.push(operand1 + operand2);
-          break;
-        case '-':
-          operandsStack.push(operand1 - operand2);
-          break;
-        case '*':
-          operandsStack.push(operand1 * operand2);
-          break;
-        case '/':
-          operandsStack.push(operand1 / operand2);
-          break;
-        default:
-          throw new Error('지원하지 않는 연산자: ' + operator);
-      }
+        var operator = operatorsStack.pop();
+        var operand2 = operandsStack.pop();
+        var operand1 = operandsStack.pop();
+
+        // 연산 수행 후 결과를 스택에 추가
+        switch (operator) {
+            case '+':
+                operandsStack.push(operand1 + operand2);
+                break;
+            case '-':
+                operandsStack.push(operand1 - operand2);
+                break;
+            case '*':
+                operandsStack.push(operand1 * operand2);
+                break;
+            case '/':
+                operandsStack.push(operand1 / operand2);
+                break;
+            default:
+                throw new Error('지원하지 않는 연산자: ' + operator);
+        }
     }
     // 최종 결과 반환
     return operandsStack.pop();
-  }
-  
+}
+
 //popup
 history.addEventListener('click', () => {
     if (isHistoryClicked) {
@@ -106,6 +107,8 @@ history.addEventListener('click', () => {
         isHistoryClicked = !isHistoryClicked;
     }
 });
+
+// none인 popup을 보여주는 함수
 function openPopup() {
     let popup = document.querySelector('#popup')
 
@@ -119,12 +122,12 @@ function openPopup() {
 // history
 let result = document.querySelector('#result');
 
-let mutresult=new MutationObserver(() => {
-    content+=result.textContent+' = '+screen.textContent+`<br>`;
+let mutresult = new MutationObserver(() => {
+    content += result.textContent + ' = ' + screen.textContent + `<br>`;
     console.log(content);
 })
 
-mutresult.observe(result,{childList:true, attributes:true}) 
+mutresult.observe(result, { childList: true, attributes: true })
 
 // keyboard function
 
@@ -136,13 +139,12 @@ function clickOperator(op) {
     // \D+ : 비숫자 1회 이상
     // g : global
 
-    let screentext=screen.textContent.match(pattern);
-    console.log(screentext);
-    if (isNaN(Number(screen.textContent[screen.textContent.length-1]))) {
+    let screentext = screen.textContent.match(pattern);
+    if (isNaN(Number(screen.textContent[screen.textContent.length - 1]))) {
         return;
     } else {
-        isfloat=-1;
-        if (op == 'unaryminus' && (screentext.length==1 || (screentext.length==2 && screentext[0]=='-'))) {
+        isfloat = -1;
+        if (op == 'unaryminus' && (screentext.length == 1 || (screentext.length == 2 && screentext[0] == '-'))) {
             if (Number(screen.textContent) > 0) {
                 screen.textContent = '-' + screen.textContent;
             }
@@ -152,16 +154,16 @@ function clickOperator(op) {
         }
         else if (op in operator) {
             screen.textContent += operator[op]
-        }else if (op == 'equal'){
-            result.textContent=screen.textContent;
-            if (screentext.length<=2){
-                screen.textContent=screentext.toString();
+        } else if (op == 'equal') {
+            result.textContent = screen.textContent;
+            if (screentext.length <= 2) {
+                screen.textContent = screentext.toString();
             }
             // 중위표기식            
-            if (screentext[0]=='-'){
-                screentext.splice(0,0,'0');
+            if (screentext[0] == '-') {
+                screentext.splice(0, 0, '0');
             }
-            screen.textContent=calculateInfixWithoutParentheses(screentext)
+            screen.textContent = calculateInfixWithoutParentheses(screentext)
         }
     }
 }
